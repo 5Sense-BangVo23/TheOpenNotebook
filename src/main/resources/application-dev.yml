@@ -8,5 +8,9 @@ MYSQL_DATABASE: the_open_notebook_db
 MAIL_USERNAME: ecosystemprogramminglanguage@gmail.com
 MAIL_PASSWORD: ainubmlhyfkrbnzy
 
+JWT_EXPIRATION: 432_000_000
+JWT_SECRET: d_gZHqxY-PSZOpw9m06j4W2rOrfB0Z8lrDu39qun2zM
+
+
 CONTAINER_PORT: 8089
 ACTIVE_PROFILE: dev

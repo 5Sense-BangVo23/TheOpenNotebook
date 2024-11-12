@@ -17,7 +17,7 @@ tags:
   - name: Authenticated
     description: Authenticated
 paths:
-  /users/register:
+  /auth/accounts/register:
     post:
       summary: Register New User
       tags:
@@ -49,7 +49,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  /auth/login:
+  /auth/accounts/login:
     post:
       summary: User Login
       tags:
@@ -75,7 +75,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
-  /users/account/verify:
+  /auth/accounts/verify:
     get:
       summary: Verify User Email
       tags:
@@ -113,7 +113,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-
+  /auth/accounts/test:
+    get:
+      summary: Test Endpoint
+      tags:
+        - Authenticated
+      responses:
+        '200':
+          description: Test message retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "My test"
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
 components:
   schemas:
     LoginRequest:
@@ -121,10 +139,10 @@ components:
       properties:
         email:
           type: string
-          example: abc@example.com
+          example: bucolicwhisper7389@gmail.com
         password:
           type: string
-          example: password
+          example: abc@#123
 
     RegisterRequest:
       type: object

@@ -24,7 +24,7 @@ services:
       SPRING_DATASOURCE_USERNAME: ${MYSQL_USER_ENV}
       SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD_ENV}
     ports:
-      - "8089:8080"
+      - "8089:8089"
     depends_on:
       - notebook_db
 

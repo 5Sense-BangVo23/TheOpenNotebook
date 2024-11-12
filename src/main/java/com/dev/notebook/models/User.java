@@ -7,6 +7,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -19,7 +20,7 @@ import java.util.Collections;
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @Entity
 @Table(name = "tbl_users")
-public class User extends BaseAuditable implements UserDetails {
+public class User extends BaseAuditable {
 
     private String firstName;
 
@@ -34,6 +35,14 @@ public class User extends BaseAuditable implements UserDetails {
 
     private boolean enabled = false;
 
+    private Integer loginAttempts;
+
+    private boolean accountNonLocked = false;
+
+    private boolean accountNonExpired;
+
+    private LocalDateTime lastLogin;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(
             name = "tbl_user_roles",
@@ -44,34 +53,4 @@ public class User extends BaseAuditable implements UserDetails {
     )
     private Role role;
 
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
 }

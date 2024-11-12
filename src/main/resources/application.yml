@@ -28,9 +28,15 @@ spring:
             enable: true
           ssl:
             trust: smtp.gmail.com
+
+  jwt:
+    expiration: ${JWT_EXPIRATION}
+    secret: ${JWT_SECRET}
+
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
 server:
   port: ${CONTAINER_PORT:8080}
   servlet:

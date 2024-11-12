@@ -8,6 +8,7 @@ import jakarta.persistence.Column;
 import lombok.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
@@ -28,6 +29,10 @@ public class Role extends BaseAuditable {
     private String name;
 
     private String authorities;
+
+    public Role(String name, Authority authorities) {
+        super();
+    }
 
 
     public void setAuthority(Authority authority) {
@@ -52,4 +57,11 @@ public class Role extends BaseAuditable {
                         .toArray(Authority[]::new)
                 : new Authority[0];
     }
+
+    public String getAuthoritiesValues() {
+        return this.authorities != null ?
+                String.join(",", this.authorities.split(","))
+                : "";
+    }
+
 }
